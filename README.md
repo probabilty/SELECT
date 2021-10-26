@@ -73,12 +73,24 @@ Using  PackageReference
     ```
 6. In the Main function, lets add some users
     ```c#
-    public class User
-    {
-        public string name { get; set; }
-        public int age { get; set; }
-        public branch branch { get; set; }
-    }
+            List<User> users = new();
+            for (int i = 0; i < 10; i++)
+            {
+                User user = new();
+                user.name = i.ToString();
+                user.age = i;
+                user.branch = new branch
+                {
+                    grade = new()
+                    {
+                        subject = user.name + i.ToString(),
+                        grade = user.age
+                    },
+                    name = "test"
+
+                };
+                users.Add(user);
+            }
     ```
 7. Finally, lets use the package
 Lets make a request that select users who are 5 years old or younger, get their age, thier grade, and thier branch name
