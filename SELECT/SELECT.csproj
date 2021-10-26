@@ -8,7 +8,7 @@
     <Copyright>@ahmed_ezzzat</Copyright>
     <PackageIconUrl>https://github.com/probabilty/SELECT/blob/master/icn.jpg</PackageIconUrl>
     <NeutralLanguage>en</NeutralLanguage>
-    <PackageLicenseUrl>https://github.com/probabilty/SELECT/tree/master#readme</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/probabilty/SELECT/blob/master/LICENSE</PackageLicenseUrl>
     <Owners>Ahmed Ezzat</Owners>
     <PackageProjectUrl>https://github.com/probabilty/SELECT</PackageProjectUrl>
     <Summary>IQueryable selection automation library for c#</Summary>
@@ -17,6 +17,7 @@
     <Description>IQueryable selection automation library for c#</Description>
     <Configurations>Release;Debug</Configurations>
     <PackageId>SELECT</PackageId>
+    <PackageReleaseNotes>Inital release</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
