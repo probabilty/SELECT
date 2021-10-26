@@ -2,8 +2,25 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageVersion>0.1</PackageVersion>
+    <Authors>Ahmed Ezzat</Authors>
+    <Copyright>@ahmed_ezzzat</Copyright>
+    <PackageIconUrl>https://github.com/probabilty/SELECT/blob/master/icn.jpg</PackageIconUrl>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageLicenseUrl>https://github.com/probabilty/SELECT/tree/master#readme</PackageLicenseUrl>
+    <Owners>Ahmed Ezzat</Owners>
+    <PackageProjectUrl>https://github.com/probabilty/SELECT</PackageProjectUrl>
+    <Summary>IQueryable selection automation library for c#</Summary>
+    <PackageTags>databse, IQuerable, request</PackageTags>
+    <Title>SELECT</Title>
+    <Description>IQueryable selection automation library for c#</Description>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType></DebugType>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <ItemGroup>
     <None Remove="Newtonsoft.Json" />
     <None Remove="Entities\" />
@@ -14,11 +31,16 @@
     <None Remove="Utilities\" />
     <None Remove="TypeSupport" />
     <None Remove="NetTopologySuite.IO" />
+    <None Remove="NuGet.Build.Packaging" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="TypeSupport" Version="1.1.12" />
     <PackageReference Include="NetTopologySuite.IO" Version="1.14.0.1" />
+    <PackageReference Include="NuGet.Build.Packaging" Version="0.2.5-dev.8">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
