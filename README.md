@@ -184,3 +184,61 @@ namespace test
     }
 }
 ```
+## The Construct Method
+This method acts on IQueryable objects, and recives a Request Object
+the Reuest Object consists of 3 Properties:
+1. Items is a comma separated string, where each substing contains a field name
+   Nested Objectes can be accessed using the ".". For example; if you need to select ID, Name and Car model, the items string should be 
+   ``` c#
+    Items = "Id,Name,Car.Model"
+   ```
+2. The order property is an object of type Order. This Object is resposable for ordering the result. This Object Contains 2 Properties
+
+    | Property | Type |Description |
+    | ------ | ------ |------ |
+    | name | string | The name of the property that is selected to order the reslts by|
+    | IsAsc | bool |If true The order is ascending, else the order is descending |
+
+3. The Filters Property is an array of the filter object. This specifies what result to reurn. Ie Applies its filters to the IQueryable object that acts on it. The filter Object is composed of 3 Components:
+
+    | Property | Type |Description |
+    | ------ | ------ |------ |
+    | fieldName | string | The field name we are setting a filter condition to |
+    | value | object | The value we filtering againest |
+    | op | Operator | The Operator used for filtring|
+    
+    The operator object is an Enum Contains these operators
+    
+    | Operator |Description |
+    | ------ | ------ |
+    | Eq | Equal |
+    | Lt |  Less Than |
+    | Gt |  Greater Than|
+    | In | In |
+    | Contains |  Contains |
+    | GtE |  Greater Than or Equal|
+    | LtE |   Less Than  or Equal|
+    
+    For Example If we need users Whos Id's is less than 5, The Filter object will be:
+    ```c#
+    filters = new Filter[]
+    {
+        new Filter(Operator.Lt,"Id",5)
+    }
+    ```
+    Or:
+     ```c#
+    filters = new Filter[]
+    {
+        new Filter(Operator.In,"Id",new long[]{1,2,3,4})
+    }
+    ```
+    IF we need to get the Users Whos were last seen in a Egypt
+    ```c#
+            filters = new Filter[]
+            {
+                new Filter(Operator.In,
+                "Location",
+                "POLYGON((-335.1708984375 29.382175075145298,-334.9951171875 31.54108987958584,-325.7666015625 31.35363694150098,-325.01953125 29.535229562948473,-326.03027343749994 26.980828590472115,-323.0419921875 21.902277966668635,-334.9951171875 21.902277966668635,-335.1708984375 29.382175075145298))")
+            }
+    ```
