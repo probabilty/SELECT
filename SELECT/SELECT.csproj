@@ -4,4 +4,28 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Entities\" />
+    <None Remove="Behavior\" />
+    <None Remove="Behavior\ApplyFilters\" />
+    <None Remove="Behavior\Select\" />
+    <None Remove="Behavior\Order\" />
+    <None Remove="Utilities\" />
+    <None Remove="TypeSupport" />
+    <None Remove="NetTopologySuite.IO" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="TypeSupport" Version="1.1.12" />
+    <PackageReference Include="NetTopologySuite.IO" Version="1.14.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Behavior\" />
+    <Folder Include="Behavior\Filter\" />
+    <Folder Include="Behavior\Select\" />
+    <Folder Include="Behavior\Order\" />
+    <Folder Include="Utilities\" />
+  </ItemGroup>
 </Project>

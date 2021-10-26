@@ -1,10 +1,8 @@
-﻿using System;
-namespace SELECT.Entities
+﻿namespace SELECT.Entities
 {
     public class Order
     {
-        public Order()
-        {
-        }
+        public string name { get; set; }
+        public bool IsAsc { get; set; }
     }
 }

@@ -1,10 +1,13 @@
-﻿using System;
-namespace SELECT
+﻿namespace SELECT.Entities
 {
-    public class Operator
+    public enum Operator
     {
-        public Operator()
-        {
-        }
+        Eq,
+        Lt,
+        Gt,
+        In,
+        Contains,
+        GtE,
+        LtE
     }
 }
