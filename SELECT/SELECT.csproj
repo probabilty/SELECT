@@ -15,6 +15,8 @@
     <PackageTags>databse, IQuerable, request</PackageTags>
     <Title>SELECT</Title>
     <Description>IQueryable selection automation library for c#</Description>
+    <Configurations>Release;Debug</Configurations>
+    <PackageId>SELECT</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
