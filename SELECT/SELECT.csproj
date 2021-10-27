@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <PackOnBuild>true</PackOnBuild>
-    <PackageVersion>0.1</PackageVersion>
+    <PackageVersion>1.0</PackageVersion>
     <Authors>Ahmed Ezzat</Authors>
     <Copyright>@ahmed_ezzzat</Copyright>
     <PackageIconUrl>https://github.com/probabilty/SELECT/blob/master/icn.jpg</PackageIconUrl>
