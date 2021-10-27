@@ -2,7 +2,7 @@
 {
     public class Order
     {
-        public string name { get; set; }
+        public string Name { get; set; }
         public bool IsAsc { get; set; }
     }
 }

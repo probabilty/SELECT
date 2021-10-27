@@ -10,7 +10,7 @@ namespace SELECT
     {
         public static IQueryable<TModel> Construct<TModel>(this IQueryable<TModel> query, Request request)
         {
-            return query.ApplyFilter<TModel>(request.filters).ApplyItems<TModel>(request.Items).Sorter(request.order);
+            return query.ApplyFilter(request.Filters).ApplyItems(request.Items).Sorter(request.Order);
         }
     }
 }

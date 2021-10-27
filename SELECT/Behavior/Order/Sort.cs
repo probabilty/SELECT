@@ -8,30 +8,24 @@ namespace SELECT.Behavior.Order
     {
         public static IQueryable<TModel> Sorter<TModel>(this IQueryable<TModel> query, Entities.Order order)
         {
-            if (order.name is null || order.name =="")
+            if (order.Name is null or "")
             {
                 return query;
             }
-            var body = GetExpression<TModel>(order.name);
-            if (order.IsAsc)
-            {
-                query = query.OrderBy(body);
-            }
-            else
-            {
-                query = query.OrderByDescending(body);
-            }
+
+            Expression<Func<TModel, object>> body = GetExpression<TModel>(order.Name);
+            query = order.IsAsc ? query.OrderBy(body) : query.OrderByDescending(body);
             return query;
         }
         private static Expression<Func<TEntity, object>> GetExpression<TEntity>(string prop)
         {
-            var param = Expression.Parameter(typeof(TEntity), "p");
-            var parts = prop.Split('.');
+            ParameterExpression param = Expression.Parameter(typeof(TEntity), "p");
+            string[] parts = prop.Split('.');
 
             Expression parent = parts.Aggregate<string, Expression>(param, Expression.Property);
             Expression conversion = Expression.Convert(parent, typeof(object));
 
-            var tryExpression = Expression.TryCatch(Expression.Block(typeof(object), conversion),
+            TryExpression tryExpression = Expression.TryCatch(Expression.Block(typeof(object), conversion),
                                                     Expression.Catch(typeof(object), Expression.Constant(null)));
 
             return Expression.Lambda<Func<TEntity, object>>(tryExpression, param);

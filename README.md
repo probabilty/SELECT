@@ -99,12 +99,12 @@ Then order the results in a descending manner using the user's age.
             Request request = new()
             {
                 Items = "age,branch.grade,branch.name",
-                order = new()
+                Order = new()
                 {
                     IsAsc = false,
-                    name = "age"
+                    Name = "age"
                 },
-                filters = new Filter[]
+                Filters = new Filter[]
                 {
                     new Filter(Operator.LtE,"age",5)
                 }

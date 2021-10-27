@@ -7,8 +7,8 @@ namespace SELECT.Utilities
     {
         public static GeometryCollection Wkt2GeomColl(string[] features,int srid= 4326)
         {
-            var geomArr = new Geometry[features.Length];
-            var reader = new WKTReader();
+            Geometry[] geomArr = new Geometry[features.Length];
+            WKTReader reader = new();
             for (int i = 0; i < features.Length; i++)
             {
                 geomArr[i] = (Geometry)reader.Read(features[i]);
@@ -16,8 +16,10 @@ namespace SELECT.Utilities
             }
 
             ;
-            var geomcoll = new GeometryCollection(geomArr);
-            geomcoll.SRID = srid;
+            GeometryCollection geomcoll = new(geomArr)
+            {
+                SRID = srid
+            };
             return geomcoll;
         }
     }

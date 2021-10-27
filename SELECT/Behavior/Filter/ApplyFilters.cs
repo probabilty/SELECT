@@ -19,9 +19,9 @@ namespace SELECT.Behavior.Filter
             foreach (Entities.Filter t in filters)
             {
                 ConstantExpression keyExpression;
-                var entityParam = Expression.Parameter(typeof(TModel), t.FieldName.Split(".")[0]);
+                ParameterExpression entityParam = Expression.Parameter(typeof(TModel), t.FieldName.Split(".")[0]);
                 keyExpression = Expression.Constant(t.Value);
-                var field = Property<TModel>(t, entityParam);
+                Expression field = Property<TModel>(t, entityParam);
                 string[] fieldNames = t.FieldName.Split(".");
                 ExtendedType fieldtype = field.Type;
                 ExtendedType inputtype = keyExpression.Type;
@@ -33,9 +33,14 @@ namespace SELECT.Behavior.Filter
                 }
 
                 if (t.Value?.GetType() == typeof(string[]) && fieldtype.Type.IsSubclassOf(typeof(Geometry)))
+                {
                     t.Value = GeometryUtils.Wkt2GeomColl((string[])t.Value);
+                }
+
                 if (fieldtype.IsEnum && inputtype.Type == typeof(long))
+                {
                     keyExpression = Expression.Constant(Enum.ToObject(fieldtype, t.Value!));
+                }
 
                 Expression body;
                 Type constructedListType;
@@ -114,7 +119,7 @@ namespace SELECT.Behavior.Filter
                     default:
                         continue;
                 }
-                var predicate = Expression.Lambda<Func<TModel, bool>>(body, entityParam);
+                Expression<Func<TModel, bool>> predicate = Expression.Lambda<Func<TModel, bool>>(body, entityParam);
                 query = query.Where(predicate);
             }
 
@@ -123,7 +128,7 @@ namespace SELECT.Behavior.Filter
         private static Expression Property<TModel>(Entities.Filter filter, ParameterExpression param)
         {
             string[] names = filter.FieldName.Split(".");
-            var entityParam = Expression.PropertyOrField(param, names[0]);
+            MemberExpression entityParam = Expression.PropertyOrField(param, names[0]);
             for (int i = 1; i < names.Length; i++)
             {
                 entityParam = Expression.PropertyOrField(entityParam, names[i]);
