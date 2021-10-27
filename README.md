@@ -30,21 +30,21 @@ Please feel free to contriute.
 
 Using package manager 
 ```sh
-Install-Package SELECT -Version 0.1.0
+Install-Package SELECT -Version 1.0.0
 ```
 Using DOTNET CLI
 ```sh
-dotnet add package SELECT --version 0.1.0
+dotnet add package SELECT --version 1.0.0
 ```
 Using  PackageReference
 ```sh
-<PackageReference Include="SELECT" Version="0.1.0" />
+<PackageReference Include="SELECT" Version="1.0.0" />
 ```
 ## Usage
 1. Create new Console Project in c# with name "test"
 2. Install SELECT
     ```sh
-    dotnet add package SELECT --version 0.1.0
+    dotnet add package SELECT --version 1.0.0
     ```
 3. Add class "Grade"
     ```c#
